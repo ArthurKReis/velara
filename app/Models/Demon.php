@@ -40,4 +40,5 @@ class Demon extends Model
     {
         return $this->hasMany(Fusion::class, 'demon_result_id');
     }
+    
 }
