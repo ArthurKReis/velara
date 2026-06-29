@@ -11,10 +11,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('demons/{demon}', [DemonController::class, 'show'])->name('demons.show');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::resource('teams', TeamController::class);
-});
-
 Route::get('/', function () {
     return view('welcome');
 });
