@@ -13,15 +13,15 @@ class DemonSeeder extends Seeder
     public function run(): void
     {
         // Verifica se o arquivo JSON existe
-        $jsonPath = storage_path('app/demons.json');
+        $jsonPath = 'demons.json'; // caminho relativo dentro de storage/app
 
-        if (!file_exists($jsonPath)) {
+        if (!Storage::exists($jsonPath)) {
             $this->command->warn('Arquivo demons.json não encontrado em storage/app/demons.json');
-            $this->command->warn('Pule a população de demônios e fusões. Você pode baixar o JSON e executar o seeder novamente.');
+            $this->command->warn('Pule a população de demônios.');
             return;
         }
 
-        $jsonContent = file_get_contents($jsonPath);
+        $jsonContent = Storage::get($jsonPath);
         $data = json_decode($jsonContent, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
