@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeamController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('teams', TeamController::class);
+});
 
 Route::get('/', function () {
     return view('welcome');
