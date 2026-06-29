@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('fusions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('demon_a_id')->constrained('demons')->onDelete('cascade');
+            $table->foreignId('demon_b_id')->constrained('demons')->onDelete('cascade');
+            $table->foreignId('demon_result_id')->constrained('demons')->onDelete('cascade');
             $table->timestamps();
+
+            // Evita duplicação de receitas de fusão
+            $table->unique(['demon_a_id', 'demon_b_id']);
         });
     }
 

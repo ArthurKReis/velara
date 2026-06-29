@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('demons', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('race');
+            $table->integer('level');
+            $table->integer('strength');
+            $table->integer('magic');
+            $table->integer('vitality');
+            $table->integer('agility');
+            $table->integer('luck');
+            $table->string('res_fire')->nullable();
+            $table->string('res_ice')->nullable();
+            $table->string('res_elec')->nullable();
+            $table->string('res_force')->nullable();
+            $table->string('res_light')->nullable();
+            $table->string('res_dark')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
